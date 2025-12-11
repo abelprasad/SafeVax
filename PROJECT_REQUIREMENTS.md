@@ -1,7 +1,7 @@
-# VaxiShare
+# SafeVax
 
 ## Project Overview
-A web-based simulation system for vaccine resource allocation across multiple hospitals, applying operating system scheduling and resource allocation algorithms to optimize equitable and efficient vaccine distribution during healthcare emergencies.
+A GUI-based simulation system for vaccine resource allocation across multiple hospitals, applying operating system scheduling and resource allocation algorithms to optimize equitable and efficient vaccine distribution during healthcare emergencies.
 
 ## Technical Architecture
 - **Backend**: C++ with Crow/Drogon web framework

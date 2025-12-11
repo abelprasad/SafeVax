@@ -2,13 +2,13 @@
 
 ## AI-Assisted Development Log
 
-This document tracks all AI assistance provided by Claude during the VaxiShare project development.
+This document tracks all AI assistance provided by Claude during the SafeVax project development.
 
 ---
 
 ## Project Overview
 
-**Project Name**: VaxiShare - Vaccine Distribution Simulation System  
+**Project Name**: SafeVax - Vaccine Distribution Simulation System  
 **Course**: Operating Systems  
 **Team Members**: Abel [Last Name], [Partner Name]  
 **AI Assistant**: Claude (Anthropic)
@@ -126,7 +126,7 @@ This document tracks all AI assistance provided by Claude during the VaxiShare p
 
 ### Implemented by Team
 
-- [✅] `Vaccine distribution simulation.py` - Complete implementation including:
+- [✅] `Vaccine distribution simulation.py` - Complete SafeVax implementation including:
   - ResourceManager class (Banker's Algorithm for deadlock avoidance)
   - Hospital class (threading-based concurrent processes)
   - SafeVaxGUI (Tkinter-based graphical interface)
