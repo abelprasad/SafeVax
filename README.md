@@ -156,6 +156,3 @@ Concurrency: Managing multi-threaded access to shared memory.
 Synchronization: Using Mutexes to protect critical sections.
 
 Process Management: Understanding process states (Blocked, Running, Ready) through the lens of hospital workflows.
-
-9. Overall Quality of Report
-This report fulfills the requirements of the assignment by clearly mapping theoretical computer science concepts (OS Kernel design) to a relevant, high-impact societal theme (Public Health). The code provided is modular, documented, and fully functional, serving as both a simulation and a visual demonstration of the algorithms discussed.
