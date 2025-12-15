@@ -6,7 +6,13 @@ import queue
 import tkinter as tk
 from tkinter import ttk, scrolledtext
 
-TOTAL_RESOURCES = {'Vaccines': 80, 'Syringes': 80, 'Trucks': 15}
+# Resources are now randomized to create different scenarios each run
+# Ranges chosen to vary between scarcity (high deadlock risk) and abundance
+TOTAL_RESOURCES = {
+    'Vaccines': random.randint(60, 130),
+    'Syringes': random.randint(60, 130),
+    'Trucks': random.randint(10, 25)
+}
 NUM_HOSPITALS = 5
 
 
@@ -18,7 +24,6 @@ class ResourceManager:
         self.lock = threading.Lock()
         self.total = total_resources
         self.available = total_resources.copy()
-        
         
         self.max_demand = {}
         self.allocated = {}
@@ -33,13 +38,11 @@ class ResourceManager:
         gui_queue.put({"type": msg_type, "data": data, "who": hospital_name})
 
     def set_safety(self, enabled):
-        
         self.safety_enabled = enabled
         status = "ENABLED" if enabled else "DISABLED"
         self.push_update("LOG", f"[TAMPER] Safety Protocol {status}!")
 
     def trigger_supply_crash(self):
-       
         with self.lock:
             for r in self.available:
                 self.available[r] = int(self.available[r] * 0.5)
@@ -47,7 +50,6 @@ class ResourceManager:
             self.push_update("GLOBAL", self.available)
 
     def trigger_demand_surge(self):
-        
         with self.lock:
             for name in self.max_demand:
                 for r in self.max_demand[name]:
@@ -66,14 +68,12 @@ class ResourceManager:
 
     def request_resources(self, name, request):
         with self.lock:
-           
             for r in request:
                 if request[r] > self.available[r]:
                     self.push_update("LOG", f" [WAIT] {name} waiting for physical items.")
                     self.push_update("STATUS", "Waiting for Stock", name)
                     return False
 
-            
             if not self.safety_enabled:
                 self._provisional_allocate(name, request)
                 self.push_update("LOG", f"[RISK] {name} granted (Safety OFF).")
@@ -82,7 +82,6 @@ class ResourceManager:
                 self.push_update("STATUS", "Allocated (Risky)", name)
                 return True
 
-        
             self._provisional_allocate(name, request)
             
             if self._is_safe_state():
@@ -159,7 +158,6 @@ class Hospital(threading.Thread):
         while self.running:
             time.sleep(random.uniform(1.5, 3.5))
             
-           
             with self.manager.lock:
                 current_need = self.manager.need[self.name].copy()
             
@@ -312,4 +310,3 @@ if __name__ == "__main__":
         h.start()
 
     root.mainloop()
-
