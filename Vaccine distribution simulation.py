@@ -6,8 +6,6 @@ import queue
 import tkinter as tk
 from tkinter import ttk, scrolledtext
 
-# Resources are now randomized to create different scenarios each run
-# Ranges chosen to vary between scarcity (high deadlock risk) and abundance
 TOTAL_RESOURCES = {
     'Vaccines': random.randint(60, 130),
     'Syringes': random.randint(60, 130),
@@ -234,7 +232,7 @@ class SafeVaxGUI:
         self.hospital_rows = {}
         self.grid_frame = grid_frame
 
-        # --- Logs ---
+        # Logs
         log_frame = ttk.LabelFrame(root, text="System Logs", padding=10)
         log_frame.pack(fill="both", expand=True, padx=10, pady=5)
         self.log_area = scrolledtext.ScrolledText(log_frame, height=10, state='disabled', font=("Courier", 9))
@@ -310,3 +308,4 @@ if __name__ == "__main__":
         h.start()
 
     root.mainloop()
+
